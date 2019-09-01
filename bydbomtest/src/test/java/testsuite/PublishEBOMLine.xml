@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--apply a new part and apply the part with material code-->
+<!--add the new part to the EBOM, public EBOM line-->
+<suite name="publish EBOM line Test">
+ 	<test name="apply a new part for EBOM">
+        <classes>
+            <class name="test.PartApply"/>
+        </classes>
+    </test>
+    <test name="apply material code for the part for EBOM">
+        <classes>
+            <class name="test.MaterialApply"/>
+        </classes>
+    </test>
+    <test name="add the new part to the EBOM">
+        <classes>
+            <class name="test.EBOMManagement"/>
+        </classes>
+    </test>
+    <test name="publish the new added BOM line">
+        <classes>
+            <class name="test.PSPublishEBOM"/>
+        </classes>
+    </test>
+    <test name="approve PS to publish the BOM line">
+        <classes>
+            <class name="test.ApproveChangeOrder"/>
+        </classes>
+    </test>
+    
+	<listeners>
+        <listener class-name="org.uncommons.reportng.HTMLReporter" />
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+    </listeners>
+
+ 
+</suite>

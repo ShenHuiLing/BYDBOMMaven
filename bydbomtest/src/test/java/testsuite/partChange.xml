@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--apply a new part-->
+<!--assign the part to PS to publish-->
+<!--approve the PS-->
+<suite name="part change Test">
+    <test name="apply a new part">
+        <classes>
+            <class name="test.PartApply"/>
+        </classes>
+    </test>
+    <test name="Publish the part change by PS order">
+        <classes>
+            <class name="test.PSChangePart"/>
+        </classes>
+    </test>
+    <test name="Approve the PS order to make the part change effectiveness">
+        <classes>
+            <class name="test.ApproveChangeOrder"/>
+        </classes>
+    </test>
+    
+ 
+
+ 
+	<listeners>
+        <listener class-name="org.uncommons.reportng.HTMLReporter" />
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+    </listeners>
+
+ 
+</suite>

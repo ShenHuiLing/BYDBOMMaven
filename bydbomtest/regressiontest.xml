@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Regression Test">
+    <test name="apply a new part">
+        <classes>
+            <class name="test.PartApply"/>
+        </classes>
+    </test>
+    <test name="apply material code for the part">
+        <classes>
+            <class name="test.MaterialApply"/>
+        </classes>
+    </test>
+	<listeners>
+        <listener class-name="org.uncommons.reportng.HTMLReporter" />
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+    </listeners>
+</suite>

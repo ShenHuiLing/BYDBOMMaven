@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--add new vehicle mode and initial as BOM header-->
+<!--add current user to the new project as a member, the role is product engineer and configuration engineer-->
+<!--apply a new part and apply the part with material code-->
+<!--add the new part to the earlyBOM, turn the earlyBOM to EBOM-->
+<suite name="EBOM Regression Test">
+    <test name="add a new vehicle mode in product spectrum page">
+        <classes>
+            <class name="test.ProductSpectrum"/>
+        </classes>
+    </test>
+    <test name="add current logging user to the project team">
+        <classes>
+            <class name="test.AddProjectMember"/>
+        </classes>
+    </test>
+    <test name="apply a new part">
+        <classes>
+            <class name="test.PartApply"/>
+        </classes>
+    </test>
+    <test name="apply material code for the part">
+        <classes>
+            <class name="test.MaterialApply"/>
+        </classes>
+    </test>
+    <test name="add the new part to the earlyBOM">
+        <classes>
+            <class name="test.EarlyBOMManagement"/>
+        </classes>
+    </test>
+ 	<test name="create a new change order to publish the earlyBOM to EBOM">
+        <classes>
+            <class name="test.ICOEarlyBOMTurnToEBOM"/>
+        </classes>
+    </test>
+	<test name="approve the change order">
+        <classes>
+            <class name="test.ApproveChangeOrder"/>
+        </classes>
+    </test>
+ 	
+    
+	<listeners>
+        <listener class-name="org.uncommons.reportng.HTMLReporter" />
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+    </listeners>
+
+ 
+</suite>

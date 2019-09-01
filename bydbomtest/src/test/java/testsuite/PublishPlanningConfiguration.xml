@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--create a new planning configuration in library-->
+<!--create a new planning configuration car-->
+<!--associate the configuration to the list-->
+<!--set the configuration option in the configuration table-->
+<!--publish the planning configuration table by PCO-->
+<!--approve the PCO-->
+<suite name="publish planning configuration table Test">
+    <test name="create a new planning configuration in library">
+        <classes>
+            <class name="test.PlanningConfigurationLibraryMaintain"/>
+        </classes>
+    </test>
+    <test name="create a new planning configuration car">
+        <classes>
+            <class name="test.PlanningConfigurationCarMaintain"/>
+        </classes>
+    </test>
+    <test name="associate the configuration to the list">
+        <classes>
+            <class name="test.PlanningConfigurationListMaintain"/>
+        </classes>
+    </test>
+    <test name="set the configuration option in the configuration table">
+        <classes>
+            <class name="test.PlanningConfigurationTableMaintain"/>
+        </classes>
+    </test>
+    <test name="publish the planning configuration table by PCO">
+        <classes>
+            <class name="test.PCOPublishPlanningConfigurationTable"/>
+        </classes>
+    </test>
+    <test name="approve the PCO to publish the planning configuration table">
+        <classes>
+            <class name="test.ApproveChangeOrder"/>
+        </classes>
+    </test>
+ 
+
+ 
+	<listeners>
+        <listener class-name="org.uncommons.reportng.HTMLReporter" />
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+    </listeners>
+
+ 
+</suite>

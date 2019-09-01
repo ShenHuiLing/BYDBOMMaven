@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Publish the VCO"
+           tests="1"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="85.094">
+  <properties />
+  
+  
+            <testcase name="ApproveCO" time="85.094" classname="test.ApproveChangeOrder" />
+      
+</testsuite>

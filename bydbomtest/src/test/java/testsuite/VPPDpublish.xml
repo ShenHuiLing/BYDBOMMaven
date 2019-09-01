@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Add a VPPD node-->
+<!--Assign the latest VPPD in VCO-->
+<!--Publish the VCO-->
+<suite name="VPPD publish regression test">
+    <test name="add a VPPD node">
+        <classes>
+            <class name="test.VPPDManagement"/>
+        </classes>
+    </test>
+    <test name="Assign the latest VPPD in VCO">
+        <classes>
+            <class name="test.VCOPublishVPPD"/>
+        </classes>
+    </test>
+    <test name="Publish the VCO">
+        <classes>
+            <class name="test.ApproveChangeOrder"/>
+        </classes>
+    </test>
+    
+	<listeners>
+        <listener class-name="org.uncommons.reportng.HTMLReporter" />
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+    </listeners>
+
+ 
+</suite>

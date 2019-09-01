@@ -1,0 +1,9 @@
+{
+"username":"alan",
+"pwd":"123456",
+"ProcessFilePath": "C:/Users/alans/Desktop/BYD/data migration/process_collection.xlsx",
+"ProcessResultPath": "C:/Users/alans/Desktop/BYD/data migration/result.xlsx",
+"ProcessXMLPath": "C:/Users/alans/Desktop/123/template.xml",
+"approver": "alan",
+"approverpwd": "123456"
+}
