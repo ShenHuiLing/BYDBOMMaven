@@ -37,7 +37,7 @@ public class ICOEarlyBOMTurnToEBOM extends BTest{
 		  mainPage.mainMenu.hoverMenu("变更管理");
 		  Thread.sleep(2000);
 		  mainPage.mainMenu.clickMenu("BOM数据发布管理");
-		  Thread.sleep(2000);
+		  Thread.sleep(10000);
 		  
 		  BOMPublishPage bomPublishPage=new BOMPublishPage(super.driver);
 		  
