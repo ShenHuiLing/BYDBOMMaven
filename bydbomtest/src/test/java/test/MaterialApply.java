@@ -87,6 +87,7 @@ public class MaterialApply extends BTest{
 		  materialApplicationTableId=materialPage.otherElements.getTableId(TableStyle.GRIDVIEW, 1);
 		  
 		  //select material group
+		  /*
 		  logger.info("select material group");
 		  materialPage.text.openTextBox(materialApplicationTableId, 1, 1);
 		  Thread.sleep(2000);
@@ -94,10 +95,11 @@ public class MaterialApply extends BTest{
 		  Thread.sleep(2000);
 		  materialPage.option.selectOption("(Æû)±ê×¼¼þ");
 		  Thread.sleep(2000);
+		  */
 		  
 		  //select manufacture code
 		  logger.info("select manufacture code");
-		  materialPage.text.openTextBox(materialApplicationTableId, 1, 2);
+		  materialPage.text.openTextBox(materialApplicationTableId, 1, 1);
 		  Thread.sleep(2000);
 		  materialPage.option.expandDropdownList();
 		  Thread.sleep(2000);
@@ -106,7 +108,7 @@ public class MaterialApply extends BTest{
 		  
 		  //select tax code
 		  logger.info("select tax code");
-		  materialPage.text.openTextBox(materialApplicationTableId, 1, 3);
+		  materialPage.text.openTextBox(materialApplicationTableId, 1, 2);
 		  Thread.sleep(1000);
 		  magnifyingGlassTableId=materialPage.otherElements.getTableId(TableStyle.GANGTRIGGERFIELD, 1);
 		  materialPage.button.clickMagnifyingGlass(TableStyle.GANGTRIGGERFIELD, magnifyingGlassTableId, 1, 2);
