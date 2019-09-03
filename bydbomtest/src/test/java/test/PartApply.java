@@ -81,7 +81,7 @@ public class PartApply extends BTest{
 		  partApplyOrderPage.button.clickButton("新增",1);
 		  Thread.sleep(1000);
 		  partApplyOrderPage.button.clickChildButton("新增-总成件");
-		  Thread.sleep(1000);
+		  Thread.sleep(5000);
 		  
 		  //get the part application table Id
 		  String partApplicationTableId=partApplyOrderPage.otherElements.getTableId(TableStyle.GRIDVIEW, 1);

@@ -69,9 +69,10 @@ public class EBOMManagement extends BTest {
 		  eBomPage.option.selectOption(prjectCode);
 		  Thread.sleep(1000);
 		  eBomPage.button.clickButton("≤È—Ø");
-		  Thread.sleep(5000);
+		  Thread.sleep(10000);
 		  
 		  eBomPage.option.clickCheckBox(0,ListViewStyle.GRIDVIEW);
+		  Thread.sleep(1000);
 		  
 		  //add a part
 		  logger.info("start editting");
