@@ -42,7 +42,7 @@ public class VPPDManagement extends BTest {
 		  mainPage.mainMenu.hoverMenu("产品管理");
 		  Thread.sleep(2000);
 		  mainPage.mainMenu.clickMenu("产品结构模板");
-		  Thread.sleep(2000);
+		  Thread.sleep(10000);
 		  
 		  //select version to lookup VPPD
 		  logger.info("query the latest VPPD");
@@ -52,7 +52,7 @@ public class VPPDManagement extends BTest {
 		  vppdPage.option.selectLastOption();
 		  Thread.sleep(1000);
 		  vppdPage.button.clickButton("查询");
-		  Thread.sleep(2000);
+		  Thread.sleep(5000);
 		  
 		  try {
 			  logger.info("start editting VPPD");

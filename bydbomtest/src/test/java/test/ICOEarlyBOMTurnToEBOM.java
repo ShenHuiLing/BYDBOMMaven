@@ -76,7 +76,7 @@ public class ICOEarlyBOMTurnToEBOM extends BTest{
 		  //add the change content
 		  logger.info("switch early BOM to EBOM tab");
 		  bomPublishPage.tab.clickTab("早期BOM转工程BOM");
-		  Thread.sleep(1000);
+		  Thread.sleep(5000);
 		  logger.info("assign the early BOM to the order");
 		  bomPublishPage.button.clickButton("关联");
 		  Thread.sleep(5000);

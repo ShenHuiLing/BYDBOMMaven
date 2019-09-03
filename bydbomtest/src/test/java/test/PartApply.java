@@ -40,11 +40,11 @@ public class PartApply extends BTest{
 	  try {
 		//start BOM
 		  super.StartBOM(EnvJsonFile.BASICFILE, "local");
-		  Thread.sleep(10000);
+		  Thread.sleep(15000);
 		  
 		  //login BOM
 		  super.LoginBOM();
-		  Thread.sleep(10000);
+		  Thread.sleep(15000);
 		  
 		  super.bcf.readJasonFile(EnvJsonFile.TESTDATA);
 		  String basicCarCode=super.bcf.getProperty("BasicCar");
