@@ -63,13 +63,13 @@ public class VPPDManagement extends BTest {
 			  //if there is no draft version, need to click prompt button then start editting
 			  logger.info("As current version has published already, upgrade a new draft version");
 			  vppdPage.button.clickButton("升版");
-			  Thread.sleep(2000);
+			  Thread.sleep(5000);
 			  vppdPage.option.openComboxFromQuerySection("版本");
 			  Thread.sleep(1000);
 			  vppdPage.option.selectLastOption();
 			  Thread.sleep(1000);
 			  vppdPage.button.clickButton("查询");
-			  Thread.sleep(2000);
+			  Thread.sleep(5000);
 			  logger.info("start editting VPPD");
 			  vppdPage.button.clickButton("进入编辑");
 			  Thread.sleep(1000);

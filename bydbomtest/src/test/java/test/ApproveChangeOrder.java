@@ -51,7 +51,7 @@ public class ApproveChangeOrder extends BTest {
 			  taskName=pendingTaskPage.otherElements.getTaskName(changeOrder);
 			  logger.info("open the change order for task: " + taskName);
 			  pendingTaskPage.link.clickLinkByText(changeOrder);
-			  Thread.sleep(15000);
+			  Thread.sleep(20000);
 			  super.approveProcess(taskName);
 			  
 		  }
