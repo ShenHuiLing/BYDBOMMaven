@@ -238,7 +238,7 @@ public class BTest {
 					Thread.sleep(5000);
 					logger.info("click view link");
 					approvalPage.link.clickLinkByText("查看");
-					Thread.sleep(3000);
+					Thread.sleep(5000);
 					
 					String labelId;
 					logger.info("fill the estimated unit price");
@@ -264,7 +264,7 @@ public class BTest {
 					
 					logger.info("save the estimated cost information");
 					approvalPage.button.clickButton("保存");
-					Thread.sleep(15000);
+					Thread.sleep(20000);
 				}
 				else if(taskName.equalsIgnoreCase("采购成本维护")) {
 					logger.info("as current approval node is cost for purchase, it needs to fill the negotiation price information");
@@ -272,7 +272,7 @@ public class BTest {
 					Thread.sleep(5000);
 					logger.info("click view link");
 					approvalPage.link.clickLinkByText("查看");
-					Thread.sleep(3000);
+					Thread.sleep(5000);
 					
 					String labelId;
 					logger.info("fill the supplier name");
@@ -317,7 +317,7 @@ public class BTest {
 					
 					logger.info("save the negotiation price information");
 					approvalPage.button.clickButton("保存");
-					Thread.sleep(15000);
+					Thread.sleep(20000);
 					
 				}else if(taskName.equalsIgnoreCase("品质会签")) {
 					logger.info("as quality approver, it needs to asses the serious index");

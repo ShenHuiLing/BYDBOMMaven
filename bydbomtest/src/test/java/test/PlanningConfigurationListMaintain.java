@@ -48,12 +48,12 @@ public class PlanningConfigurationListMaintain extends BTest {
 		  planConfigPage.option.expandDropdownList(DropDownListStyle.GANTCOMBOBOX,labelId);
 		  Thread.sleep(5000);
 		  planConfigPage.option.selectOption(planningConfigurationCarName);
-		  Thread.sleep(2000);
+		  Thread.sleep(5000);
 		  
 		  //associate configuration to the list
 		  logger.info("associate configuration to the list");
 		  planConfigPage.button.clickButton("关联规划配置描述");
-		  Thread.sleep(2000);
+		  Thread.sleep(10000);
 		  
 		  //input the planning configuration for search
 		  String planningConfiguration=super.bcf.getProperty("PlanningConfig");

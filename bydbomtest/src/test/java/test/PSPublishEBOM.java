@@ -130,18 +130,18 @@ public class PSPublishEBOM extends BTest{
 		  //save the PS
 		  logger.info("save the change order");
 		  psPage.button.clickButton("保存");
-		  Thread.sleep(3000);
+		  Thread.sleep(10000);
 		  
 		  //add the change content
 		  logger.info("assign BOM line to the change order");
 		  psPage.tab.clickTab("仅BOM变更");
-		  Thread.sleep(1000);
+		  Thread.sleep(5000);
 		  psPage.button.clickButton("关联");
-		  Thread.sleep(3000);
+		  Thread.sleep(5000);
 		  
 		  //query the BOM
 		  psPage.button.clickButton("查询",1);
-		  Thread.sleep(3000);
+		  Thread.sleep(5000);
 		  //input the part number and filter out the part
 		  String bomLocatorTableId;
 		  bomLocatorTableId=psPage.otherElements.getTableId(TableStyle.COLUMNFILTER, 1);
