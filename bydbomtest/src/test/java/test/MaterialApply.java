@@ -142,7 +142,8 @@ public class MaterialApply extends BTest{
 		  		"MAT_NO=(select to_char(sysdate,'yyyymmddhh24miss') from dual),\n" + 
 		  		"mat_desc='mat_desc' || (select to_char(sysdate,'yyyymmddhh24miss') from dual),\n" + 
 		  		"mat_endesc='mat_endesc' || (select to_char(sysdate,'yyyymmddhh24miss') from dual),\n" + 
-		  		"ACTIVE_STATUS='CURRENT'\n" + 
+		  		"ACTIVE_STATUS='CURRENT'\n" +
+		  		"IS_APPLY=1\n" +
 		  		"where material_id=\n" + 
 		  		"(\n" + 
 		  		"select cmi.material_id\n" + 

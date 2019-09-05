@@ -96,7 +96,7 @@ public class PartApply extends BTest{
 		  partApplyOrderPage.text.openTextBox(partApplicationTableId, 1, 7);
 		  Thread.sleep(1000);
 		  partApplyOrderPage.button.clickMagnifyingGlass(TableStyle.materialName2, "", 1, 2);
-		  Thread.sleep(1000);
+		  Thread.sleep(10000);
 		  popUpSelectorTableId=partApplyOrderPage.otherElements.getTableId(TableStyle.GRIDVIEW, 2);
 		  partApplyOrderPage.option.clickCheckBox(popUpSelectorTableId, 1, 1);
 		  Thread.sleep(1000);
