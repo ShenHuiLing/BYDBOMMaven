@@ -53,7 +53,7 @@ public class VCOPublishVPPD extends BTest {
 		  
 		  logger.info("save the newly added VCO");
 		  vcoPage.button.clickButton("±£´æ");
-		  Thread.sleep(5000);
+		  Thread.sleep(10000);
 		  
 		  //add the change content
 		  logger.info("assign the change content");
