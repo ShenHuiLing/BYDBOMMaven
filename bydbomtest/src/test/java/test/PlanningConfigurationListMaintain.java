@@ -60,7 +60,7 @@ public class PlanningConfigurationListMaintain extends BTest {
 		  planConfigPage.text.inputText("level3", 1, planningConfiguration);
 		  Thread.sleep(1000);
 		  planConfigPage.button.clickButton("≤È—Ø", 1);
-		  Thread.sleep(1000);
+		  Thread.sleep(5000);
 		  
 		  //check the planning configuration which was found
 		  String PopUpTableId=planConfigPage.otherElements.getTableId(TableStyle.GRIDVIEW,1);
