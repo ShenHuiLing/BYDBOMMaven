@@ -3,7 +3,9 @@ package test;
 import org.testng.annotations.Test;
 
 import base.BTest;
+import common.DropDownListStyle;
 import common.EnvJsonFile;
+import common.LabelStyle;
 import common.TableStyle;
 import page.MainPage;
 import page.ConfigurationPage;
@@ -15,7 +17,7 @@ import java.io.IOException;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 
-public class PlanningConfigurationTableMaintain extends BTest{
+public class EngineConfigurationTableMaintain extends BTest{
   @Test
   public void SetConfigurationOptionForCar() throws IOException{
 	  try {
@@ -27,54 +29,48 @@ public class PlanningConfigurationTableMaintain extends BTest{
 		  Thread.sleep(10000);
 		  
 		  //open planning configuration window
-		  logger.info("open planning configuration management window");
+		  logger.info("open engine configuration management window");
 		  MainPage mainPage=new MainPage(super.driver);
 		  mainPage.mainMenu.hoverMenu("配置管理");
 		  Thread.sleep(2000);
-		  mainPage.mainMenu.hoverMenu("规划配置");
+		  mainPage.mainMenu.hoverMenu("工程配置");
 		  Thread.sleep(2000);
-		  mainPage.mainMenu.clickMenu("规划配置表");
+		  mainPage.mainMenu.clickMenu("工程配置表");
 		  Thread.sleep(5000);
 		  
-		  ConfigurationPage planConfigPage=new ConfigurationPage(super.driver);
+		  ConfigurationPage configPage=new ConfigurationPage(super.driver);
 		  
 		  //select planning configuration car
-		  String planningConfigurationCar;
+		  logger.info("select vehicle mode code");
+		  String labelId=configPage.otherElements.getLabelId(LabelStyle.COMBO,"车型型号");
 		  super.bcf.readJasonFile(EnvJsonFile.TESTDATA);
-		  planningConfigurationCar=super.bcf.getProperty("PlanningConfigurationCarName");
-		  String MagnifyingGlassTableId=planConfigPage.otherElements.getTableId(TableStyle.GANGTRIGGERFIELD, 0);
-		  planConfigPage.button.clickMagnifyingGlass(TableStyle.GANGTRIGGERFIELD, MagnifyingGlassTableId,1,2);
-		  Thread.sleep(3000);
-		  //input planning configuration car for search
-		  planConfigPage.text.inputText("planVehicleName", planningConfigurationCar);
-		  Thread.sleep(1000);
-		  planConfigPage.button.clickButton("查询", 1);
-		  Thread.sleep(1000);
-		  String PopUpTableId=planConfigPage.otherElements.getTableId(TableStyle.GRIDVIEW,1);
-		  planConfigPage.option.clickCheckBox(PopUpTableId, 1,1);
-		  Thread.sleep(1000);
-		  planConfigPage.button.clickButton("选择");
-		  Thread.sleep(1000);
+		  String projectCode=super.bcf.getProperty("ProjectCode");
+		  configPage.option.expandDropdownList(DropDownListStyle.COMBO,labelId);
+		  Thread.sleep(2000);
+		  configPage.option.selectOption(projectCode);
+		  Thread.sleep(5000);
 		  
 		  //start editing
 		  logger.info("start editing configuration option");
-		  planConfigPage.button.clickButton("进入编辑");
+		  configPage.button.clickButton("进入编辑");
 		  Thread.sleep(1000);
 		  
-		  String mainDataTableId=planConfigPage.otherElements.getTableId(TableStyle.GRIDVIEW,0);
+		  String mainDataTableId=configPage.otherElements.getTableId(TableStyle.GRIDVIEW,0);
+		  String configDataTableId=configPage.getTableId(mainDataTableId);
+
 		  logger.info("select configuraiton option");
-		  planConfigPage.text.openTextBox(mainDataTableId, 1, 8);
+		  configPage.text.openTextBox(configDataTableId, 1, 8);
 		  Thread.sleep(1000);
-		  planConfigPage.option.expandDropdownList();
+		  configPage.option.expandDropdownList();
 		  Thread.sleep(1000);
-		  planConfigPage.option.selectOption("●");
+		  configPage.option.selectOption("●");
 		  Thread.sleep(1000);
-		  planConfigPage.text.openTextBox(mainDataTableId, 1, 9);
+		  configPage.text.openTextBox(configDataTableId, 1, 7);
 		  Thread.sleep(1000);
 		  
 		  //save configuration table
 		  logger.info("save configuration table");
-		  planConfigPage.button.clickButton("保存");
+		  configPage.button.clickButton("保存");
 		  Thread.sleep(2000);
 		  
 	  } catch (Exception e) {

@@ -254,13 +254,18 @@ public class ProductSpectrum extends BTest {
 		  productSpectrumPage.button.clickButton("保存");
 		  Thread.sleep(2000);
 		  
-		  //click the go-live year node
+		  //click the go-live year node and intial super BOM header and configuration table header
 		  logger.info("initial super BOM");
 		  productSpectrumPage.otherElements.clickRowByText(ListViewStyle.TREEVIEW, "4", projectCode);
 		  Thread.sleep(1000);
 		  
 		  productSpectrumPage.button.clickButton("初始化超级BOM");
-		  Thread.sleep(2000);
+		  Thread.sleep(5000);
+		  
+		  logger.info("initial engine configuration table header");
+		 
+		  productSpectrumPage.button.clickButton("初始化工程配置表");
+		  Thread.sleep(5000);
 		  
 		  logger.info("save the vehicle mode for other test to use");
 		  Map<String, String> testData=new HashMap<String, String>();

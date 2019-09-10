@@ -13,7 +13,7 @@ import common.EnvJsonFile;
 import common.LabelStyle;
 import common.TableStyle;
 import page.MainPage;
-import page.PlanningConfigurationPage;
+import page.ConfigurationPage;
 
 
 public class PlanningConfigurationListMaintain extends BTest {
@@ -35,9 +35,9 @@ public class PlanningConfigurationListMaintain extends BTest {
 		  mainPage.mainMenu.hoverMenu("规划配置");
 		  Thread.sleep(2000);
 		  mainPage.mainMenu.clickMenu("规划配置描述清单");
-		  Thread.sleep(5000);
+		  Thread.sleep(10000);
 		  
-		  PlanningConfigurationPage planConfigPage=new PlanningConfigurationPage(super.driver);
+		  ConfigurationPage planConfigPage=new ConfigurationPage(super.driver);
 		  
 		  //select planning configuration car
 		  logger.info("select planning configuration car");
@@ -46,9 +46,9 @@ public class PlanningConfigurationListMaintain extends BTest {
 		  planningConfigurationCarName=super.bcf.getProperty("PlanningConfigurationCarName");
 		  String labelId=planConfigPage.otherElements.getLabelId(LabelStyle.GANTCOMBOBOX,"规划车型");
 		  planConfigPage.option.expandDropdownList(DropDownListStyle.GANTCOMBOBOX,labelId);
-		  Thread.sleep(5000);
+		  Thread.sleep(10000);
 		  planConfigPage.option.selectOption(planningConfigurationCarName);
-		  Thread.sleep(5000);
+		  Thread.sleep(10000);
 		  
 		  //associate configuration to the list
 		  logger.info("associate configuration to the list");

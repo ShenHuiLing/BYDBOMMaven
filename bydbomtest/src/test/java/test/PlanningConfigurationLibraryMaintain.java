@@ -6,7 +6,7 @@ import base.BTest;
 import common.EnvJsonFile;
 import common.TableStyle;
 import page.MainPage;
-import page.PlanningConfigurationPage;
+import page.ConfigurationPage;
 
 import org.testng.annotations.BeforeTest;
 
@@ -46,7 +46,7 @@ public class PlanningConfigurationLibraryMaintain extends BTest{
 		  mainPage.mainMenu.clickMenu("πÊªÆ≈‰÷√√Ë ˆø‚");
 		  Thread.sleep(5000);
 		  
-		  PlanningConfigurationPage planConfigPage=new PlanningConfigurationPage(super.driver);
+		  ConfigurationPage planConfigPage=new ConfigurationPage(super.driver);
 		  
 		  //start editing
 		  logger.info("start editing");

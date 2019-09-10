@@ -9,7 +9,7 @@ import common.EnvJsonFile;
 import common.LabelStyle;
 import common.TableStyle;
 import page.MainPage;
-import page.PlanningConfigurationPage;
+import page.ConfigurationPage;
 
 import org.testng.annotations.BeforeTest;
 
@@ -39,7 +39,7 @@ public class PCOPublishPlanningConfigurationTable extends BTest{
 		  mainPage.mainMenu.clickMenu("规划配置变更管理");
 		  Thread.sleep(10000);
 		  
-		  PlanningConfigurationPage planConfigPage=new PlanningConfigurationPage(super.driver);
+		  ConfigurationPage planConfigPage=new ConfigurationPage(super.driver);
 		  
 		  //create a new PCO
 		  logger.info("create a new PCO");
