@@ -124,8 +124,6 @@ public class VPPDManagement extends BTest {
 		  vppdPage.button.clickButton("±£´æ");
 		  Thread.sleep(1000);
 		  
-		  Assert.assertEquals(vppdPage.otherElements.isEditFlagDisappeared(ListViewStyle.GRIDVIEW), true);
-		  
 	} catch (Exception e) {
 		super.TakeSnap();
 		logger.error(e.getMessage());
