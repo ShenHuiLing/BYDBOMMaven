@@ -36,7 +36,7 @@ public class AddProjectMember extends BTest{
 		  mainPage.mainMenu.hoverMenu("基础数据管理");
 		  Thread.sleep(2000);
 		  mainPage.mainMenu.clickMenu("项目成员管理");
-		  Thread.sleep(2000);
+		  Thread.sleep(3000);
 		  
 		  ProjectMemberPage projectMemberPage=new ProjectMemberPage(super.driver);
 		  
