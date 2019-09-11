@@ -48,9 +48,9 @@ public class VPPDManagement extends BTest {
 		  logger.info("query the latest VPPD");
 		  VPPDPage vppdPage=new VPPDPage(super.driver);
 		  vppdPage.option.openComboxFromQuerySection("∞Ê±æ");
-		  Thread.sleep(1000);
+		  Thread.sleep(5000);
 		  vppdPage.option.selectLastOption();
-		  Thread.sleep(1000);
+		  Thread.sleep(5000);
 		  vppdPage.button.clickButton("≤È—Ø");
 		  Thread.sleep(5000);
 		  
