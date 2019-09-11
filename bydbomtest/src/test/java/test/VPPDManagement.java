@@ -63,7 +63,7 @@ public class VPPDManagement extends BTest {
 			  //if there is no draft version, need to click prompt button then start editting
 			  logger.info("As current version has published already, upgrade a new draft version");
 			  vppdPage.button.clickButton("Éý°æ");
-			  Thread.sleep(10000);
+			  Thread.sleep(20000);
 			  vppdPage.option.openComboxFromQuerySection("°æ±¾");
 			  Thread.sleep(5000);
 			  vppdPage.option.selectLastOption();
