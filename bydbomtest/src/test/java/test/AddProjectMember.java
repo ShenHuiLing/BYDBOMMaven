@@ -47,11 +47,11 @@ public class AddProjectMember extends BTest{
 		  super.bcf.readJasonFile(EnvJsonFile.TESTDATA);
 		  String prjectCode=super.bcf.getProperty("ProjectCode");
 		  projectMemberPage.option.expandDropdownList(DropDownListStyle.COMBO,labelId);
-		  Thread.sleep(2000);
+		  Thread.sleep(5000);
 		  projectMemberPage.option.selectOption(prjectCode);
-		  Thread.sleep(1000);
+		  Thread.sleep(5000);
 		  projectMemberPage.button.clickButton("≤È—Ø");
-		  Thread.sleep(1000);
+		  Thread.sleep(5000);
 		  
 		  //add a member
 		  logger.info("start editting");
