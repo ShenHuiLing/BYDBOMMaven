@@ -65,9 +65,9 @@ public class VPPDManagement extends BTest {
 			  vppdPage.button.clickButton("Éý°æ");
 			  Thread.sleep(10000);
 			  vppdPage.option.openComboxFromQuerySection("°æ±¾");
-			  Thread.sleep(1000);
+			  Thread.sleep(5000);
 			  vppdPage.option.selectLastOption();
-			  Thread.sleep(1000);
+			  Thread.sleep(5000);
 			  vppdPage.button.clickButton("²éÑ¯");
 			  Thread.sleep(5000);
 			  logger.info("start editting VPPD");

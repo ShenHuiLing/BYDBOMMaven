@@ -46,7 +46,7 @@ public class PlanningConfigurationListMaintain extends BTest {
 		  planningConfigurationCarName=super.bcf.getProperty("PlanningConfigurationCarName");
 		  String labelId=planConfigPage.otherElements.getLabelId(LabelStyle.GANTCOMBOBOX,"规划车型");
 		  planConfigPage.option.expandDropdownList(DropDownListStyle.GANTCOMBOBOX,labelId);
-		  Thread.sleep(10000);
+		  Thread.sleep(20000);
 		  planConfigPage.option.selectOption(planningConfigurationCarName);
 		  Thread.sleep(10000);
 		  
