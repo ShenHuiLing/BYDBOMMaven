@@ -104,11 +104,14 @@ public class AddProjectMember extends BTest{
 		  Thread.sleep(1000);
 		  String Id;
 		  Id=projectMemberPage.otherElements.getLabelId(LabelStyle.TEXTFIELD, "人员工号");
+		  logger.info("input userId and query the user");
 		  projectMemberPage.text.openTextBox(TextStyle.IDININPUT, Id, 1);
+		  Thread.sleep(1000);
 		  projectMemberPage.text.inputText(TextStyle.TEXTFIELD,username);
 		  Thread.sleep(1000);
 		  projectMemberPage.button.clickButton("查询",1);
-		  Thread.sleep(1000);
+		  Thread.sleep(5000);
+		  logger.info("select the user which is found");
 		  PopUpTableId=projectMemberPage.otherElements.getTableId(TableStyle.GRIDVIEW,1);
 		  projectMemberPage.option.clickCheckBox(PopUpTableId, 1,1);
 		  Thread.sleep(1000);
