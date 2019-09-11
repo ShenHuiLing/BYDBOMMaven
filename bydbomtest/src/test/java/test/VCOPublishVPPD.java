@@ -41,7 +41,7 @@ public class VCOPublishVPPD extends BTest {
 		  mainPage.mainMenu.hoverMenu("变更管理");
 		  Thread.sleep(2000);
 		  mainPage.mainMenu.clickMenu("产品结构模板变更管理");
-		  Thread.sleep(5000);
+		  Thread.sleep(10000);
 		  
 		  //create a new VCO
 		  logger.info("create a new VCO");
