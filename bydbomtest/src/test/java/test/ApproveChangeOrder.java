@@ -39,13 +39,19 @@ public class ApproveChangeOrder extends BTest {
 		  Thread.sleep(2000);
 		  mainPage.mainMenu.clickMenu("待处理任务");
 		  Thread.sleep(10000);
-
-		  //click the change order link and keep approving the order till the approver completes his task
+		  
 		  PendingTaskPage pendingTaskPage=new PendingTaskPage(super.driver);
 		  super.bcf.readJasonFile(EnvJsonFile.TESTDATA);
 		  String changeOrder=super.bcf.getProperty("ChangeOrder");
 		  String taskName;
 		  
+		  //input the change order number and fire a search
+		  pendingTaskPage.text.inputText("orderName", changeOrder);
+		  Thread.sleep(1000);
+		  pendingTaskPage.button.clickButton("查询");
+		  Thread.sleep(5000);
+		  
+		  //click the change order link and keep approving the order till the approver completes his task
 		  logger.info("start to approve the change order");
 		  while(pendingTaskPage.link.isLinkExist(changeOrder)) {
 			  taskName=pendingTaskPage.otherElements.getTaskName(changeOrder);
