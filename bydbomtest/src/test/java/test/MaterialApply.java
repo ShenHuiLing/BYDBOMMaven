@@ -25,11 +25,11 @@ public class MaterialApply extends BTest{
 		  
 		  //start BOM
 		  super.StartBOM(EnvJsonFile.BASICFILE, "local");
-		  Thread.sleep(10000);
+		  Thread.sleep(20000);
 		  
 		  //login BOM
 		  super.LoginBOM();
-		  Thread.sleep(10000);
+		  Thread.sleep(20000);
 		  
 		  //open material application window
 		  logger.info("open part material application window");
