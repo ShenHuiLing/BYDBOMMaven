@@ -49,9 +49,9 @@ public class EarlyBOMManagement extends BTest{
 		  super.bcf.readJasonFile(EnvJsonFile.TESTDATA);
 		  String prjectCode=super.bcf.getProperty("ProjectCode");
 		  eBomPage.option.expandDropdownList(DropDownListStyle.COMBO,labelId);
-		  Thread.sleep(2000);
+		  Thread.sleep(10000);
 		  eBomPage.option.selectOption(prjectCode);
-		  Thread.sleep(1000);
+		  Thread.sleep(5000);
 		  eBomPage.button.clickButton("≤È—Ø");
 		  Thread.sleep(10000);
 		  
