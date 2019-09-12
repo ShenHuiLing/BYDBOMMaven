@@ -71,7 +71,7 @@ public class PartApply extends BTest{
 		  Thread.sleep(1000);
 		  logger.info("save the new part application");
 		  partApplyOrderPage.button.clickButton("±£´æ");
-		  Thread.sleep(5000);
+		  Thread.sleep(10000);
 		  
 		  logger.info("start editing the fields in the part application");
 		  partApplyOrderPage.button.clickButton("½øÈë±à¼­");
