@@ -66,7 +66,7 @@ public class MaterialApply extends BTest{
 		  materialPage.text.inputText(TextStyle.TEXTFIELD, partNum);
 		  Thread.sleep(1000);
 		  materialPage.button.clickButton("≤È—Ø",1);
-		  Thread.sleep(1000);
+		  Thread.sleep(10000);
 		  PopUpTableId=materialPage.otherElements.getTableId(TableStyle.GRIDVIEW,2);
 		  materialPage.option.clickCheckBox(PopUpTableId, 1,1);
 		  Thread.sleep(1000);
