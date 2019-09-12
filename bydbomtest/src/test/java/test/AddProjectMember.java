@@ -110,7 +110,7 @@ public class AddProjectMember extends BTest{
 		  projectMemberPage.text.inputText(TextStyle.TEXTFIELD,username);
 		  Thread.sleep(1000);
 		  projectMemberPage.button.clickButton("≤È—Ø",1);
-		  Thread.sleep(5000);
+		  Thread.sleep(10000);
 		  logger.info("select the user which is found");
 		  PopUpTableId=projectMemberPage.otherElements.getTableId(TableStyle.GRIDVIEW,1);
 		  projectMemberPage.option.clickCheckBox(PopUpTableId, 1,1);
