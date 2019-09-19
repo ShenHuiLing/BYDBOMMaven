@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import base.BTest;
 import common.ColumnStyle;
 import common.EnvJsonFile;
+import common.LabelStyle;
 import common.ListViewStyle;
 import common.TableStyle;
 import common.TextStyle;
@@ -14,6 +15,8 @@ import page.VPPDPage;
 import org.testng.annotations.BeforeTest;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
@@ -60,6 +63,9 @@ public class VPPDManagement extends BTest {
 		  
 		  String existingStatus=vppdPage.text.getValueFromTextBox(TableStyle.GRIDVIEW, tableId, 1, 11);
 		  
+		  String VCOSkipFlag="false";
+		  String existingVCO="";
+		  
 		  if(existingStatus.contains("当前")) {
 			//if there is no draft version, need to click prompt button then start editing
 			  logger.info("As current version has published already, upgrade a new draft version");
@@ -73,7 +79,7 @@ public class VPPDManagement extends BTest {
 			  Thread.sleep(5000);  
 		  }
 		  
-		  String existingVCO=vppdPage.text.getValueFromTextBox(TableStyle.GRIDVIEW, tableId, 1, 12);
+		  existingVCO=vppdPage.text.getValueFromTextBox(TableStyle.GRIDVIEW, tableId, 1, 12);
 		  Thread.sleep(1000);
 		  
 		  if(!existingVCO.trim().isEmpty()) {
@@ -82,17 +88,26 @@ public class VPPDManagement extends BTest {
 			  vppdPage.link.clickLinkByText(existingVCO);
 			  Thread.sleep(5000);
 			  
-			  //remove the change content
-			  logger.info("remove the change content");
-			  vppdPage.tab.clickTab("变更内容");
-			  Thread.sleep(1000);
-			  vppdPage.button.clickButton("取消关联");
-			  Thread.sleep(5000);
+			  String lableId=vppdPage.otherElements.getLabelId(LabelStyle.GANTCODETYPECOMBOBOX, "VCO状态");
+			  String changeStatus=vppdPage.text.getValueFromTextBox(lableId, "changeStatus", 0);
+			  
+			  if(changeStatus.contains("审批中")) {
+				  //record a flag to identify the VPPD has been associated in change order and the order is in approval process
+				  logger.info("there is already a VCO in process");
+				  VCOSkipFlag="true";
+			  }else if(changeStatus.contains("草稿")){
+				//remove the change content
+				  logger.info("remove the change content");
+				  vppdPage.tab.clickTab("变更内容");
+				  Thread.sleep(1000);
+				  vppdPage.button.clickButton("取消关联");
+				  Thread.sleep(5000);
+			  }
 			  vppdPage.button.clickCloseButton(1);
-			  Thread.sleep(1000);
+			  Thread.sleep(1000); 
 		  }
 		  
-		  //if(existingVCO.trim().isEmpty()) {
+		  if(VCOSkipFlag.contains("false")) {
 			  logger.info("start editting VPPD");
 			  vppdPage.button.clickButton("进入编辑");
 			  Thread.sleep(1000);
@@ -144,8 +159,15 @@ public class VPPDManagement extends BTest {
 			  //save the VPPD
 			  logger.info("save the VPPD");
 			  vppdPage.button.clickButton("保存");
-			  Thread.sleep(1000);
-		  //}	  
+			  Thread.sleep(5000);
+		  }
+			  //save the VCO number and VCO skip flag to see if the current version has already associated in change order
+			  //if yes, let the VCO publish VPPD case to skip creating a new VCO
+			  logger.info("save the existing change order number and VCO skip flag in test data file");
+			  Map<String, String> testData=new HashMap<String, String>();
+			  testData.put("ChangeOrder",existingVCO);
+			  testData.put("VCOSkipFlag", VCOSkipFlag);
+			  super.bcf.writeJasonFile(EnvJsonFile.TESTDATA, testData);
 		  
 	} catch (Exception e) {
 		super.TakeSnap();

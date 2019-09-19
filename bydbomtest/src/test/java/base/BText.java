@@ -153,7 +153,14 @@ public class BText {
 		element.sendKeys(text);
 	}
 	
-	
+	/**
+	 * get the text from the specific table 
+	 * @param ts: table style to identify which kind of table for look for
+	 * @param tableId: table id
+	 * @param row: row number 
+	 * @param col: column number
+	 * @return: return the value from the specific cell of a table
+	 */
 	public String getValueFromTextBox(TableStyle ts, String tableId, int row, int col) {
 		String value="";
 		String xPath="";
@@ -167,16 +174,36 @@ public class BText {
 	}
 	
 	/**
-	 * get the value from the input text box
-	 * @return 
+	 * get the value from text box
+	 * @param elementId: the element id
+	 * @param elementName: the element name
+	 * @param index: if there multiple element with the same identification, use index to fine the specific one 
+	 * @return value
+	 */
+	public String getValueFromTextBox(String elementId, String elementName, int index) {
+		String value="";
+		String xPath="//input[contains(@id, '" + elementId + "') and contains(@name, '" + elementName + "')]";
+		elementList=this.driver.findElements(By.xpath(xPath));
+		value=elementList.get(index).getAttribute("value");
+		return value;
+	}
+	
+	/**
+	 * get the change order number from the change order window
+	 * @return change order number
 	 */
 	public String getChangeOrderNumber() {
 		String value="";
 		String xPath="//input[contains(@id, 'textfield') and contains(@id, 'inputEl') and contains(@name, 'changeCode') and contains(@readonly, 'readonly')]";
+		xPath="//input[contains(@name, 'changeCode')]";
 		WebElement element=this.driver.findElement(By.xpath(xPath));
-		value=element.getAttribute("value");		
+		elementList=this.driver.findElements(By.xpath(xPath));
+		System.out.println(elementList.size());
+		value=element.getAttribute("value");
+		System.out.println(value);
 		return value;
 	}
+	
 	
 	/**
 	 * check if there is value in the specific cell
