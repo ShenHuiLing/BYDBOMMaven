@@ -35,7 +35,7 @@ public class PlanningConfigurationListMaintain extends BTest {
 		  mainPage.mainMenu.hoverMenu("规划配置");
 		  Thread.sleep(2000);
 		  mainPage.mainMenu.clickMenu("规划配置描述清单");
-		  Thread.sleep(10000);
+		  Thread.sleep(20000);
 		  
 		  ConfigurationPage planConfigPage=new ConfigurationPage(super.driver);
 		  
