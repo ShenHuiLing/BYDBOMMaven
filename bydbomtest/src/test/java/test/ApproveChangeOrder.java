@@ -48,9 +48,9 @@ public class ApproveChangeOrder extends BTest {
 		  //input the change order number and fire a search
 		  String labelId=pendingTaskPage.otherElements.getLabelId(LabelStyle.TEXTFIELD, "±Ìµ•");
 		  pendingTaskPage.text.openTextBox(TextStyle.IDININPUT, labelId, 0);
-		  Thread.sleep(1000);
+		  Thread.sleep(2000);
 		  pendingTaskPage.text.inputText("orderName", changeOrder);
-		  Thread.sleep(1000);
+		  Thread.sleep(2000);
 		  pendingTaskPage.button.clickButton("≤È—Ø");
 		  Thread.sleep(5000);
 		  
