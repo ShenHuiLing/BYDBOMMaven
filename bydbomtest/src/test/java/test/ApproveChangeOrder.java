@@ -38,7 +38,7 @@ public class ApproveChangeOrder extends BTest {
 		  mainPage.mainMenu.hoverMenu("个人中心");
 		  Thread.sleep(2000);
 		  mainPage.mainMenu.clickMenu("待处理任务");
-		  Thread.sleep(10000);
+		  Thread.sleep(20000);
 		  
 		  PendingTaskPage pendingTaskPage=new PendingTaskPage(super.driver);
 		  super.bcf.readJasonFile(EnvJsonFile.TESTDATA);
@@ -57,7 +57,7 @@ public class ApproveChangeOrder extends BTest {
 			  taskName=pendingTaskPage.otherElements.getTaskName(changeOrder);
 			  logger.info("open the change order for task: " + taskName);
 			  pendingTaskPage.link.clickLinkByText(changeOrder);
-			  Thread.sleep(20000);
+			  Thread.sleep(30000);
 			  super.approveProcess(taskName);
 			  
 		  }
