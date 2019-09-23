@@ -5,8 +5,7 @@ import org.testng.annotations.Test;
 import base.BTest;
 import common.EnvJsonFile;
 import common.TableStyle;
-import page.MainPage;
-import page.ConfigurationPage;
+import page.Page;
 
 import org.testng.annotations.BeforeTest;
 
@@ -36,97 +35,97 @@ public class PlanningConfigurationLibraryMaintain extends BTest{
 		  super.LoginBOM();
 		  Thread.sleep(10000);
 		  
+		  Page page=new Page(super.driver);
+
 		  //open planning configuration window
 		  logger.info("open planning configuration management window");
-		  MainPage mainPage=new MainPage(super.driver);
-		  mainPage.mainMenu.hoverMenu("配置管理");
+
+		  page.mainMenu.hoverMenu("配置管理");
 		  Thread.sleep(2000);
-		  mainPage.mainMenu.hoverMenu("规划配置");
+		  page.mainMenu.hoverMenu("规划配置");
 		  Thread.sleep(2000);
-		  mainPage.mainMenu.clickMenu("规划配置描述库");
+		  page.mainMenu.clickMenu("规划配置描述库");
 		  Thread.sleep(5000);
-		  
-		  ConfigurationPage planConfigPage=new ConfigurationPage(super.driver);
-		  
+		  	  
 		  //start editing
 		  logger.info("start editing");
-		  planConfigPage.button.clickButton("进入编辑");
+		  page.button.clickButton("进入编辑");
 		  Thread.sleep(1000);
 		  
 		  //add configuration group
 		  logger.info("add configuration group");
-		  planConfigPage.button.clickButton("新增");
+		  page.button.clickButton("新增");
 		  Thread.sleep(1000);
-		  planConfigPage.button.clickChildButton("新增根节点");
+		  page.button.clickChildButton("新增根节点");
 		  Thread.sleep(1000);
 		  
 		  String tableId;
-		  tableId=planConfigPage.otherElements.getTableId(TableStyle.TREEVIEW, 0);
+		  tableId=page.otherElements.getTableId(TableStyle.TREEVIEW, 0);
 		  
-		  planConfigPage.text.openTextBox(tableId, 1, 3);
+		  page.text.openTextBox(tableId, 1, 3);
 		  Thread.sleep(1000);
 		  
-		  planConfigPage.text.inputText("featureName", "PCG_" + bcf.getTimeStamp());
+		  page.text.inputText("featureName", "PCG_" + bcf.getTimeStamp());
 		  Thread.sleep(2000);
 		  
 		  logger.info("save the configuration group");
-		  planConfigPage.button.clickButton("保存");
+		  page.button.clickButton("保存");
 		  Thread.sleep(1000);
 		  
 		  logger.info("take the configuration group effectiveness");
-		  planConfigPage.button.clickButton("生效");
+		  page.button.clickButton("生效");
 		  Thread.sleep(1000);
 		  
-		  planConfigPage.button.clickButton("是");
+		  page.button.clickButton("是");
 		  Thread.sleep(1000);
 		  
 		  //add configuration family
 		  logger.info("add the configuration family");
-		  planConfigPage.button.clickButton("新增");
+		  page.button.clickButton("新增");
 		  Thread.sleep(1000);
-		  planConfigPage.button.clickChildButton("新增子节点");
-		  Thread.sleep(1000);
-		  
-		  planConfigPage.text.openTextBox(tableId, 2, 3);
+		  page.button.clickChildButton("新增子节点");
 		  Thread.sleep(1000);
 		  
-		  planConfigPage.text.inputText("featureName", "PCF_"+bcf.getTimeStamp());
+		  page.text.openTextBox(tableId, 2, 3);
+		  Thread.sleep(1000);
+		  
+		  page.text.inputText("featureName", "PCF_"+bcf.getTimeStamp());
 		  Thread.sleep(2000);
 		  
 		  logger.info("save the configuration family");
-		  planConfigPage.button.clickButton("保存");
+		  page.button.clickButton("保存");
 		  Thread.sleep(1000);
 		  
 		  logger.info("take the configuration family effectiveness");
-		  planConfigPage.button.clickButton("生效");
+		  page.button.clickButton("生效");
 		  Thread.sleep(1000);
 		  
-		  planConfigPage.button.clickButton("是");
+		  page.button.clickButton("是");
 		  Thread.sleep(1000);
 		  
 		  //add configuration value 
 		  logger.info("add the configuration value");
-		  planConfigPage.button.clickButton("新增");
+		  page.button.clickButton("新增");
 		  Thread.sleep(1000);
-		  planConfigPage.button.clickChildButton("新增子节点");
+		  page.button.clickChildButton("新增子节点");
 		  Thread.sleep(1000);
 		  
-		  planConfigPage.text.openTextBox(tableId, 3, 3);
+		  page.text.openTextBox(tableId, 3, 3);
 		  Thread.sleep(1000);
 		  
 		  String planningConfig="PCV_"+bcf.getTimeStamp();
-		  planConfigPage.text.inputText("featureName", planningConfig);
+		  page.text.inputText("featureName", planningConfig);
 		  Thread.sleep(2000);
 		  
 		  logger.info("save the configuration value");
-		  planConfigPage.button.clickButton("保存");
+		  page.button.clickButton("保存");
 		  Thread.sleep(1000);
 		  
 		  logger.info("take the configuration value effectiveness");
-		  planConfigPage.button.clickButton("生效");
+		  page.button.clickButton("生效");
 		  Thread.sleep(1000);
 		  
-		  planConfigPage.button.clickButton("是");
+		  page.button.clickButton("是");
 		  Thread.sleep(1000);
 		  
 		  //save the change order number in test data file

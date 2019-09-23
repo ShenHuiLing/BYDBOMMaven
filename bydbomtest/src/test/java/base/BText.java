@@ -59,6 +59,10 @@ public class BText {
 			xPath="//textarea[contains(@id, 'textareafield') and contains(@id, '" + Id + "') and contains(@id, 'inputEl')]";
 			WebElement element=this.driver.findElement(By.xpath(xPath));
 			element.click();
+		}else if(ts==TextStyle.mstdata_varibalevehiclecombobox) {
+			xPath="//input[contains(@id, 'mstdata_varibalevehiclecombobox') and contains(@id, '" + Id + "') and contains(@id, 'inputEl')]";
+			WebElement element=this.driver.findElement(By.xpath(xPath));
+			element.click();
 		}
 	}
 	

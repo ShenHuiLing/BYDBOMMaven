@@ -10,8 +10,8 @@ import common.LabelStyle;
 import common.ListViewStyle;
 import common.TableStyle;
 import common.TextStyle;
-import page.MainPage;
-import page.PendingTaskPage;
+import page.Page;
+
 
 import org.testng.annotations.BeforeTest;
 
@@ -32,34 +32,34 @@ public class ApproveChangeOrder extends BTest {
 		  super.LoginBOMAsApprover();
 		  Thread.sleep(20000);
 		  
+		  Page page=new Page(super.driver);
+		  
 		  //open pending task window
 		  logger.info("open pending task window");
-		  MainPage mainPage=new MainPage(super.driver);
-		  mainPage.mainMenu.hoverMenu("个人中心");
+		  page.mainMenu.hoverMenu("个人中心");
 		  Thread.sleep(2000);
-		  mainPage.mainMenu.clickMenu("待处理任务");
+		  page.mainMenu.clickMenu("待处理任务");
 		  Thread.sleep(20000);
 		  
-		  PendingTaskPage pendingTaskPage=new PendingTaskPage(super.driver);
 		  super.bcf.readJasonFile(EnvJsonFile.TESTDATA);
 		  String changeOrder=super.bcf.getProperty("ChangeOrder");
 		  String taskName;
 		  
 		  //input the change order number and fire a search
-		  String labelId=pendingTaskPage.otherElements.getLabelId(LabelStyle.TEXTFIELD, "表单");
-		  pendingTaskPage.text.openTextBox(TextStyle.IDININPUT, labelId, 0);
+		  String labelId=page.otherElements.getLabelId(LabelStyle.TEXTFIELD, "表单");
+		  page.text.openTextBox(TextStyle.IDININPUT, labelId, 0);
 		  Thread.sleep(2000);
-		  pendingTaskPage.text.inputText("orderName", changeOrder);
+		  page.text.inputText("orderName", changeOrder);
 		  Thread.sleep(2000);
-		  pendingTaskPage.button.clickButton("查询");
+		  page.button.clickButton("查询");
 		  Thread.sleep(5000);
 		  
 		  //click the change order link and keep approving the order till the approver completes his task
 		  logger.info("start to approve the change order");
-		  while(pendingTaskPage.link.isLinkExist(changeOrder)) {
-			  taskName=pendingTaskPage.otherElements.getTaskName(changeOrder);
+		  while(page.link.isLinkExist(changeOrder)) {
+			  taskName=page.otherElements.getTaskName(changeOrder);
 			  logger.info("open the change order for task: " + taskName);
-			  pendingTaskPage.link.clickLinkByText(changeOrder);
+			  page.link.clickLinkByText(changeOrder);
 			  Thread.sleep(30000);
 			  super.approveProcess(taskName);
 			  

@@ -20,29 +20,29 @@ import java.util.Map;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 
-public class PSPublishEBOM extends BTest{
+public class PSPublishEngineConfigurationTable extends BTest{
   @Test
-  public void publishEBOMWithECO() throws IOException {
+  public void PSpublishEngineConfigurationTable() throws IOException {
 	  try {
 		  //start BOM
 		  super.StartBOM(EnvJsonFile.BASICFILE, "local");
-		  Thread.sleep(10000);
-		
+		  Thread.sleep(15000);
 		  //login BOM
 		  super.LoginBOM();
-		  Thread.sleep(10000);
+		  Thread.sleep(20000);
 		  
 		  Page page=new Page(super.driver);
 		  
 		  //open PS window
 		  logger.info("open PS management window");
+		  
 		  page.mainMenu.hoverMenu("变更管理");
 		  Thread.sleep(2000);
 		  page.mainMenu.clickMenu("评审报告管理");
-		  Thread.sleep(5000);
+		  Thread.sleep(10000);
 		  
 		  String labelId;
-		  String partNum;
+		  String projectCode;
 		  String basicCarCode;
 		  
 		  //create a new PS
@@ -53,12 +53,14 @@ public class PSPublishEBOM extends BTest{
 		  String changeOrder=page.text.getValueFromTextBox(labelId, "changeCode", 0);
 		  logger.info("new PS number: " + changeOrder);
 		  
-		 
 		  super.bcf.readJasonFile(EnvJsonFile.TESTDATA);
-		  partNum=super.bcf.getProperty("PartNum");
+		  projectCode=super.bcf.getProperty("ProjectCode");
 		  basicCarCode=super.bcf.getProperty("BasicCar");
+		  logger.info("vehicle mode code: " + projectCode);
+		  logger.info("part number: " + projectCode);
+		  logger.info("basic car code: " + basicCarCode);
 		  
-		  //select the basic car code
+		//select the basic car code
 		  logger.info("select basic car code");
 		  labelId=page.otherElements.getLabelId(LabelStyle.GANTGRIDCOMBOBOX,"基础车型",0);
 		  page.button.clickMagnifyingGlass(TableStyle.GANTGRIDCOMBOBOX, labelId, 1, 2);
@@ -77,104 +79,96 @@ public class PSPublishEBOM extends BTest{
 		  Thread.sleep(1000);
 		  
 		  //select the change type
-		  logger.info("select change type as only BOM change");
+		  logger.info("select the change type");
 		  labelId=page.otherElements.getLabelId(LabelStyle.GANTCODETYPECOMBOBOX,"变更类型",1);
 		  page.option.expandDropdownList(DropDownListStyle.GANTCODETYPECOMBOBOX,labelId);
 		  Thread.sleep(2000);
-		  page.option.selectOption("仅BOM变更");
+		  page.option.selectOption("零部件/软件/BOM/配置变更");
+		  Thread.sleep(1000);
+		  
+		  //select the change content
+		  logger.info("select the change content");
+		  labelId=page.otherElements.getLabelId(LabelStyle.GANTCODETYPECOMBOBOX,"变更内容",1);
+		  page.option.expandDropdownList(DropDownListStyle.GANTCODETYPECOMBOBOX,labelId);
+		  Thread.sleep(2000);
+		  page.option.selectOption("仅工程配置表发布");
 		  Thread.sleep(1000);
 		  
 		  //select the change source
-		  logger.info("select change source");
+		  logger.info("select the change source");
 		  labelId=page.otherElements.getLabelId(LabelStyle.GANTCODETYPECOMBOBOX,"变更来源",0);
 		  page.option.expandDropdownList(DropDownListStyle.GANTCODETYPECOMBOBOX,labelId);
 		  Thread.sleep(2000);
 		  page.option.selectOption("公司定义");
 		  Thread.sleep(1000);
 		  
-		  //select the stage
-		  logger.info("select stage");
+		  //select the change phase
+		  logger.info("select the change phase");
 		  labelId=page.otherElements.getLabelId(LabelStyle.GANTCODETYPECOMBOBOX,"评审阶段",0);
 		  page.option.expandDropdownList(DropDownListStyle.GANTCODETYPECOMBOBOX,labelId);
 		  Thread.sleep(2000);
 		  page.option.selectOption("试制前");
 		  Thread.sleep(1000);
 		  
-		  String Id;
 		  //input the change brief
-		  logger.info("input change brief");
-		  Id=page.otherElements.getLabelId(LabelStyle.TEXTFIELD, "变更主题");
-		  page.text.openTextBox(TextStyle.IDININPUT, Id, 1);
+		  logger.info("input the change brief");
+		  labelId=page.otherElements.getLabelId(LabelStyle.TEXTFIELD, "变更主题");
+		  page.text.openTextBox(TextStyle.IDININPUT, labelId, 1);
 		  Thread.sleep(1000);
-		  page.text.inputText("changeExt.changeTheme","EBOM_publish_" + changeOrder);
+		  page.text.inputText("changeExt.changeTheme","PartChange_publish_" + changeOrder);
 		  Thread.sleep(1000);
 		  
 		  //input the change reason
-		  logger.info("select change reason");
-		  Id=page.otherElements.getLabelId(LabelStyle.TEXTAREAFIELD, "变更原因");
-		  page.text.openTextBox(TextStyle.TEXTAREAFIELD, Id, 1);
+		  logger.info("input the change reason");
+		  labelId=page.otherElements.getLabelId(LabelStyle.TEXTAREAFIELD, "变更原因");
+		  page.text.openTextBox(TextStyle.TEXTAREAFIELD, labelId, 1);
 		  Thread.sleep(1000);
-		  page.text.inputText(TextStyle.TEXTAREAFIELD,"changeReason","EBOM_publish_reason_" + changeOrder);
+		  page.text.inputText(TextStyle.TEXTAREAFIELD,"changeReason","PartChange_publish_reason_" + changeOrder);
 		  Thread.sleep(1000);
 		  
 		  //input the change method
-		  logger.info("select change method");
-		  Id=page.otherElements.getLabelId(LabelStyle.TEXTAREAFIELD, "变更措施");
-		  page.text.openTextBox(TextStyle.TEXTAREAFIELD, Id, 1);
+		  logger.info("input the change method");
+		  labelId=page.otherElements.getLabelId(LabelStyle.TEXTAREAFIELD, "变更措施");
+		  page.text.openTextBox(TextStyle.TEXTAREAFIELD, labelId, 1);
 		  Thread.sleep(1000);
-		  page.text.inputText(TextStyle.TEXTAREAFIELD,"changeExt.changeMeasures","EBOM_publish_method_" + changeOrder);
+		  page.text.inputText(TextStyle.TEXTAREAFIELD,"changeExt.changeMeasures","PartChange_publish_method_" + changeOrder);
 		  Thread.sleep(1000);
 		  
 		  //save the PS
-		  logger.info("save the change order");
+		  logger.info("save the PS");
 		  page.button.clickButton("保存");
-		  Thread.sleep(10000);
+		  Thread.sleep(5000);
 		  
 		  //add the change content
-		  logger.info("assign BOM line to the change order");
-		  page.tab.clickTab("仅BOM变更");
-		  Thread.sleep(5000);
-		  page.button.clickButton("关联");
-		  Thread.sleep(5000);
+		  logger.info("open part change tab");
+		  page.tab.clickTab("配置表变更");
+		  Thread.sleep(10000);
+		  labelId=page.otherElements.getLabelId(LabelStyle.mstdata_varibalevehiclecombobox, "配置车型");
+		  System.out.println(labelId);
+		  page.text.openTextBox(TextStyle.mstdata_varibalevehiclecombobox, labelId, 0);
+		  Thread.sleep(3000);
+		  page.option.SelectAllCheckboxOption();
+		  Thread.sleep(3000);
+		  page.button.clickButton("关联变更");
+		  Thread.sleep(10000);
 		  
-		  //query the BOM
-		  page.button.clickButton("查询",1);
-		  Thread.sleep(5000);
-		  //input the part number and filter out the part
-		  String bomLocatorTableId;
-		  bomLocatorTableId=page.otherElements.getTableId(TableStyle.COLUMNFILTER, 1);
-		  //page.text.openTextBox(bomLocatorTableId, 1, 1);
-		  //Thread.sleep(1000);
-		  page.text.inputText(bomLocatorTableId, partNum);
-		  Thread.sleep(1000);
-		  //use the open text box in table method to click the magnification glass as they are the same kind of element "div"
-		  page.text.openTextBox(bomLocatorTableId, 1, 2);
-		  Thread.sleep(1000);
-		  
-		  String mainDataTableId;
-		  //choose the part which is found
-		  mainDataTableId=page.otherElements.getTableId(TableStyle.GRIDVIEW, 2);
-		  System.out.println(mainDataTableId);
-		  page.option.clickCheckBox(mainDataTableId, 2, 1);
-		  Thread.sleep(1000);
-		  
-		  page.button.clickButton("选择");
-		  Thread.sleep(5000);
-		 
 		  //start approval process
-		  super.startApprovalProcess(ChangeOrderType.BOM);
+		  logger.info("start approval process");
+		  super.startApprovalProcess(ChangeOrderType.PLANNINGCONFIGURATION);
 		  
-		  logger.info("save the change order number: " + changeOrder);
+		  //save the change order number in test data file
+		  logger.info("save the change order number in test data file");
+		  logger.info("change order#: " + changeOrder);
 		  Map<String, String> testData=new HashMap<String, String>();
 		  testData.put("ChangeOrder",changeOrder);
 		  super.bcf.writeJasonFile(EnvJsonFile.TESTDATA, testData);
-		  
 		  
 	  }catch(Exception e) {
 		  super.TakeSnap();
 		  logger.error(e.getMessage());
 		  e.printStackTrace();
 		  Assert.assertEquals(false, true);
+		  
 	  }
   }
   @BeforeTest

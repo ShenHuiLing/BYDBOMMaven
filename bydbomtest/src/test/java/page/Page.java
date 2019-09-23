@@ -4,9 +4,9 @@ import org.openqa.selenium.WebDriver;
 
 import base.BPage;
 
-public class ProjectMemberPage extends BPage{
+public class Page extends BPage {
 
-	public ProjectMemberPage(WebDriver driver) {
+	public Page(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}

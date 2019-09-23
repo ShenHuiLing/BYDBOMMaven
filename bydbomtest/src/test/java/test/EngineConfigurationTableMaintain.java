@@ -7,7 +7,7 @@ import common.DropDownListStyle;
 import common.EnvJsonFile;
 import common.LabelStyle;
 import common.TableStyle;
-import page.MainPage;
+import page.Page;
 import page.ConfigurationPage;
 
 import org.testng.annotations.BeforeTest;
@@ -28,14 +28,15 @@ public class EngineConfigurationTableMaintain extends BTest{
 		  super.LoginBOM();
 		  Thread.sleep(10000);
 		  
+		  Page page=new Page(super.driver);
+		  
 		  //open planning configuration window
 		  logger.info("open engine configuration management window");
-		  MainPage mainPage=new MainPage(super.driver);
-		  mainPage.mainMenu.hoverMenu("配置管理");
+		  page.mainMenu.hoverMenu("配置管理");
 		  Thread.sleep(2000);
-		  mainPage.mainMenu.hoverMenu("工程配置");
+		  page.mainMenu.hoverMenu("工程配置");
 		  Thread.sleep(2000);
-		  mainPage.mainMenu.clickMenu("工程配置表");
+		  page.mainMenu.clickMenu("工程配置表");
 		  Thread.sleep(5000);
 		  
 		  ConfigurationPage configPage=new ConfigurationPage(super.driver);

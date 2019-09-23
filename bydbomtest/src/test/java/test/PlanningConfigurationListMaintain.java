@@ -12,8 +12,8 @@ import common.DropDownListStyle;
 import common.EnvJsonFile;
 import common.LabelStyle;
 import common.TableStyle;
-import page.MainPage;
-import page.ConfigurationPage;
+import page.Page;
+
 
 
 public class PlanningConfigurationListMaintain extends BTest {
@@ -27,50 +27,49 @@ public class PlanningConfigurationListMaintain extends BTest {
 		  super.LoginBOM();
 		  Thread.sleep(10000);
 		  
+		  Page page=new Page(super.driver);
+		  
 		  //open planning configuration car window
 		  logger.info("open planning configuration list window");
-		  MainPage mainPage=new MainPage(super.driver);
-		  mainPage.mainMenu.hoverMenu("配置管理");
+		  page.mainMenu.hoverMenu("配置管理");
 		  Thread.sleep(2000);
-		  mainPage.mainMenu.hoverMenu("规划配置");
+		  page.mainMenu.hoverMenu("规划配置");
 		  Thread.sleep(2000);
-		  mainPage.mainMenu.clickMenu("规划配置描述清单");
+		  page.mainMenu.clickMenu("规划配置描述清单");
 		  Thread.sleep(20000);
-		  
-		  ConfigurationPage planConfigPage=new ConfigurationPage(super.driver);
 		  
 		  //select planning configuration car
 		  logger.info("select planning configuration car");
 		  String planningConfigurationCarName;
 		  super.bcf.readJasonFile(EnvJsonFile.TESTDATA);
 		  planningConfigurationCarName=super.bcf.getProperty("PlanningConfigurationCarName");
-		  String labelId=planConfigPage.otherElements.getLabelId(LabelStyle.GANTCOMBOBOX,"规划车型");
-		  planConfigPage.option.expandDropdownList(DropDownListStyle.GANTCOMBOBOX,labelId);
+		  String labelId=page.otherElements.getLabelId(LabelStyle.GANTCOMBOBOX,"规划车型");
+		  page.option.expandDropdownList(DropDownListStyle.GANTCOMBOBOX,labelId);
 		  Thread.sleep(20000);
-		  planConfigPage.option.selectOption(planningConfigurationCarName);
+		  page.option.selectOption(planningConfigurationCarName);
 		  Thread.sleep(10000);
 		  
 		  //associate configuration to the list
 		  logger.info("associate configuration to the list");
-		  planConfigPage.button.clickButton("关联规划配置描述");
+		  page.button.clickButton("关联规划配置描述");
 		  Thread.sleep(10000);
 		  
 		  //input the planning configuration for search
 		  String planningConfiguration=super.bcf.getProperty("PlanningConfig");
-		  planConfigPage.text.inputText("level3", 1, planningConfiguration);
+		  page.text.inputText("level3", 1, planningConfiguration);
 		  Thread.sleep(1000);
-		  planConfigPage.button.clickButton("查询", 1);
+		  page.button.clickButton("查询", 1);
 		  Thread.sleep(5000);
 		  
 		  //check the planning configuration which was found
-		  String PopUpTableId=planConfigPage.otherElements.getTableId(TableStyle.GRIDVIEW,1);
-		  planConfigPage.option.clickCheckBox(PopUpTableId, 1,1);
+		  String PopUpTableId=page.otherElements.getTableId(TableStyle.GRIDVIEW,1);
+		  page.option.clickCheckBox(PopUpTableId, 1,1);
 		  Thread.sleep(1000);
-		  planConfigPage.button.clickButton(">>");
+		  page.button.clickButton(">>");
 		  Thread.sleep(1000);
 		  
-		  //planConfigPage.otherElements.resizePopupWindow("gantang.cfgmgmt.planconfig.planconfigdesc.PlanConfigDescSelectorView");
-		  planConfigPage.button.clickButton("确定");
+		  //page.otherElements.resizePopupWindow("gantang.cfgmgmt.planconfig.planconfigdesc.PlanConfigDescSelectorView");
+		  page.button.clickButton("确定");
 		  Thread.sleep(2000);
 		  
 	  }catch(Exception e) {

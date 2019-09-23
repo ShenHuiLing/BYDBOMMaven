@@ -8,8 +8,7 @@ import common.EnvJsonFile;
 import common.LabelStyle;
 import common.TableStyle;
 import common.TextStyle;
-import page.MainPage;
-import page.ProjectMemberPage;
+import page.Page;
 
 import org.testng.annotations.BeforeTest;
 
@@ -30,36 +29,34 @@ public class AddProjectMember extends BTest{
 		  String username=super.LoginBOM();
 		  Thread.sleep(10000);
 		  
+		  Page page=new Page(super.driver);
+		  
 		  //open project member window
 		  logger.info("open project member");
-		  MainPage mainPage=new MainPage(super.driver);
-		  mainPage.mainMenu.hoverMenu("基础数据管理");
+		  page.mainMenu.hoverMenu("基础数据管理");
 		  Thread.sleep(2000);
-		  mainPage.mainMenu.clickMenu("项目成员管理");
+		  page.mainMenu.clickMenu("项目成员管理");
 		  Thread.sleep(3000);
-		  
-		  ProjectMemberPage projectMemberPage=new ProjectMemberPage(super.driver);
-		  
 		  
 		  //select vehicle mode code
 		  logger.info("select vehicle mode code and query the project member records");
-		  String labelId=projectMemberPage.otherElements.getLabelId(LabelStyle.COMBO,"车型型号");
+		  String labelId=page.otherElements.getLabelId(LabelStyle.COMBO,"车型型号");
 		  super.bcf.readJasonFile(EnvJsonFile.TESTDATA);
 		  String prjectCode=super.bcf.getProperty("ProjectCode");
-		  projectMemberPage.option.expandDropdownList(DropDownListStyle.COMBO,labelId);
+		  page.option.expandDropdownList(DropDownListStyle.COMBO,labelId);
 		  Thread.sleep(5000);
-		  projectMemberPage.option.selectOption(prjectCode);
+		  page.option.selectOption(prjectCode);
 		  Thread.sleep(5000);
-		  projectMemberPage.button.clickButton("查询");
+		  page.button.clickButton("查询");
 		  Thread.sleep(5000);
 		  
 		  //add a member
 		  logger.info("start editting");
-		  projectMemberPage.button.clickButton("进入编辑");
+		  page.button.clickButton("进入编辑");
 		  Thread.sleep(1000);
 		  
-		  this.addMemberByRole(projectMemberPage, "产品工程师", username);
-		  this.addMemberByRole(projectMemberPage, "配置工程师", username);
+		  this.addMemberByRole(page, "产品工程师", username);
+		  this.addMemberByRole(page, "配置工程师", username);
 		  
 	  }catch(Exception e) {
 		  super.TakeSnap();
@@ -70,26 +67,26 @@ public class AddProjectMember extends BTest{
 	  
   }
   
-  private void addMemberByRole(ProjectMemberPage projectMemberPage, String role, String username) throws Exception {
+  private void addMemberByRole(Page page, String role, String username) throws Exception {
 	  
 	  try {
 		  logger.info("add a new member");
-		  projectMemberPage.button.clickButton("添加");
+		  page.button.clickButton("添加");
 		  Thread.sleep(1000);
 		  
 		  String projectMemberTableId;
 		  
 		  //set the role as "product engineer" for the new member
 		  logger.info("select the role");
-		  projectMemberTableId=projectMemberPage.otherElements.getTableId(TableStyle.GRIDVIEW, 0);
+		  projectMemberTableId=page.otherElements.getTableId(TableStyle.GRIDVIEW, 0);
 		  //select the base belong to
-		  projectMemberPage.text.openTextBox(projectMemberTableId, 1, 4);
+		  page.text.openTextBox(projectMemberTableId, 1, 4);
 		  Thread.sleep(1000);
-		  projectMemberPage.option.expandDropdownList();
+		  page.option.expandDropdownList();
 		  Thread.sleep(1000);
-		  projectMemberPage.text.inputText("roleCode",1,role);
+		  page.text.inputText("roleCode",1,role);
 		  Thread.sleep(1000);
-		  projectMemberPage.option.selectOption(role);
+		  page.option.selectOption(role);
 		  Thread.sleep(2000);
 		  
 		  //select the user
@@ -97,30 +94,30 @@ public class AddProjectMember extends BTest{
 		  String MagnifyingGlassTableId;
 		  
 		  logger.info("assign the user to the project role");
-		  projectMemberPage.text.openTextBox(projectMemberTableId, 1, 7);
+		  page.text.openTextBox(projectMemberTableId, 1, 7);
 		  Thread.sleep(1000);
-		  MagnifyingGlassTableId=projectMemberPage.otherElements.getTableId(TableStyle.USERTRIGGERFIELD, 1);
-		  projectMemberPage.button.clickMagnifyingGlass(TableStyle.USERTRIGGERFIELD, MagnifyingGlassTableId,1,2);
+		  MagnifyingGlassTableId=page.otherElements.getTableId(TableStyle.USERTRIGGERFIELD, 1);
+		  page.button.clickMagnifyingGlass(TableStyle.USERTRIGGERFIELD, MagnifyingGlassTableId,1,2);
 		  Thread.sleep(1000);
 		  String Id;
-		  Id=projectMemberPage.otherElements.getLabelId(LabelStyle.TEXTFIELD, "人员工号");
+		  Id=page.otherElements.getLabelId(LabelStyle.TEXTFIELD, "人员工号");
 		  logger.info("input userId and query the user");
-		  projectMemberPage.text.openTextBox(TextStyle.IDININPUT, Id, 1);
+		  page.text.openTextBox(TextStyle.IDININPUT, Id, 1);
 		  Thread.sleep(1000);
-		  projectMemberPage.text.inputText(TextStyle.TEXTFIELD,username);
+		  page.text.inputText(TextStyle.TEXTFIELD,username);
 		  Thread.sleep(1000);
-		  projectMemberPage.button.clickButton("查询",1);
+		  page.button.clickButton("查询",1);
 		  Thread.sleep(10000);
 		  logger.info("select the user which is found");
-		  PopUpTableId=projectMemberPage.otherElements.getTableId(TableStyle.GRIDVIEW,1);
-		  projectMemberPage.option.clickCheckBox(PopUpTableId, 1,1);
+		  PopUpTableId=page.otherElements.getTableId(TableStyle.GRIDVIEW,1);
+		  page.option.clickCheckBox(PopUpTableId, 1,1);
 		  Thread.sleep(1000);
-		  projectMemberPage.button.clickButton("确定");
+		  page.button.clickButton("确定");
 		  Thread.sleep(1000);
 		  
 		  //save the project member
 		  logger.info("save the project member");
-		  projectMemberPage.button.clickButton("保存");
+		  page.button.clickButton("保存");
 		  Thread.sleep(5000);
 	  }catch(Exception e) {
 		  e.printStackTrace();

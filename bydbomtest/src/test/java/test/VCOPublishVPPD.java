@@ -3,15 +3,10 @@ package test;
 import org.testng.annotations.Test;
 
 import base.BTest;
-import common.ChangeOrderCode;
 import common.ChangeOrderType;
-import common.ColumnStyle;
 import common.EnvJsonFile;
 import common.LabelStyle;
-import common.TableStyle;
-import common.TextStyle;
-import page.MainPage;
-import page.VCOPage;
+import page.Page;
 
 import org.testng.annotations.BeforeTest;
 
@@ -43,32 +38,32 @@ public class VCOPublishVPPD extends BTest {
 			  super.LoginBOM();
 			  Thread.sleep(20000);
 			  
+			  Page page=new Page(super.driver);
+			  
 			  //open VCO window
 			  logger.info("open VCO management window");
-			  MainPage mainPage=new MainPage(super.driver);
-			  mainPage.mainMenu.hoverMenu("变更管理");
+			  page.mainMenu.hoverMenu("变更管理");
 			  Thread.sleep(2000);
-			  mainPage.mainMenu.clickMenu("产品结构模板变更管理");
+			  page.mainMenu.clickMenu("产品结构模板变更管理");
 			  Thread.sleep(10000);
 			  
 			  //create a new VCO
 			  logger.info("create a new VCO");
-			  VCOPage vcoPage=new VCOPage(super.driver);
-			  vcoPage.button.clickButton("新增");
+			  page.button.clickButton("新增");
 			  Thread.sleep(2000);
-			  String labelId=vcoPage.otherElements.getLabelId(LabelStyle.TEXTFIELD, "VCO编号",1);
-			  String changeOrder=vcoPage.text.getValueFromTextBox(labelId, "changeCode", 0);
+			  String labelId=page.otherElements.getLabelId(LabelStyle.TEXTFIELD, "VCO编号",1);
+			  String changeOrder=page.text.getValueFromTextBox(labelId, "changeCode", 0);
 			  System.out.println(changeOrder);
 			  
 			  logger.info("save the newly added VCO");
-			  vcoPage.button.clickButton("保存");
+			  page.button.clickButton("保存");
 			  Thread.sleep(10000);
 			  
 			  //add the change content
 			  logger.info("assign the change content");
-			  vcoPage.tab.clickTab("变更内容");
+			  page.tab.clickTab("变更内容");
 			  Thread.sleep(1000);
-			  vcoPage.button.clickButton("整版关联");
+			  page.button.clickButton("整版关联");
 			  Thread.sleep(5000);
 			  
 			  //start approval process

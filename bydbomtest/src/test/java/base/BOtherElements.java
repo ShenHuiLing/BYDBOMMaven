@@ -179,6 +179,8 @@ public class BOtherElements {
 			searchString="gantcombobox-";
 		else if(ls==LabelStyle.TEXTAREAFIELD)
 			searchString="textareafield-";
+		else if(ls==LabelStyle.mstdata_varibalevehiclecombobox)
+			searchString="mstdata_varibalevehiclecombobox-";
 		
 		xPath="//label[contains(@id, '" + searchString + "')]";
 		
@@ -223,6 +225,8 @@ public class BOtherElements {
 			searchString="checkboxfield-";
 		else if(ls==LabelStyle.GANTGRIDCOMBOBOX)
 			searchString="gantgridcombobox-";
+		else if(ls==LabelStyle.mstdata_varibalevehiclecombobox)
+			searchString="mstdata_varibalevehiclecombobox-";
 		
 		xPath="//label[contains(@id, '" + searchString + "')]";
 		

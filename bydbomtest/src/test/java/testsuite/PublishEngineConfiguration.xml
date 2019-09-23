@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--create a new engine configuration in library-->
+<!--associate the configuration to the list-->
+<!--set the configuration option in the configuration table-->
+<!--publish the engine configuration table by PS-->
+<!--approve the PS-->
+<suite name="publish planning configuration table Test">
+    <test name="create a new planning configuration in library">
+        <classes>
+            <class name="test.EngineConfigurationLibraryMaintain"/>
+        </classes>
+    </test>
+    <test name="associate the configuration to the list">
+        <classes>
+            <class name="test.EngineConfigurationListMaintain"/>
+        </classes>
+    </test>
+    <test name="set the configuration option in the configuration table">
+        <classes>
+            <class name="test.EngineConfigurationTableMaintain"/>
+        </classes>
+    </test>
+    <test name="publish the engine configuration table by PS">
+        <classes>
+            <class name="test.PSPublishEngineConfigurationTable"/>
+        </classes>
+    </test>
+    <test name="approve the PS to publish the engine configuration table">
+        <classes>
+            <class name="test.ApproveChangeOrder"/>
+        </classes>
+    </test>
+  
+	<listeners>
+        <listener class-name="org.uncommons.reportng.HTMLReporter" />
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+    </listeners>
+
+ 
+</suite>

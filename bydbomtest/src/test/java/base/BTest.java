@@ -18,15 +18,13 @@ import com.google.common.io.Files;
 import common.BCommonFunction;
 import common.ChangeOrderType;
 import common.CheckBoxStyle;
-import common.ColumnStyle;
 import common.DropDownListStyle;
 import common.EnvJsonFile;
 import common.LabelStyle;
-import common.ListViewStyle;
 import common.TableStyle;
 import common.TextStyle;
-import page.ApprovalPage;
 import page.LoginPage;
+import page.Page;
 
 
 
@@ -110,7 +108,7 @@ public class BTest {
 	 */
 	public void selectApprover (String approver, String tableId) throws Exception  {
 		try {
-			  ApprovalPage approvalPage=new ApprovalPage(this.driver);
+			  Page approvalPage=new Page(this.driver);
 			  //judge if there are candidate approvers to be selected, if column count greater than 2 then continue to select approver
 			  int approverColCount=approvalPage.otherElements.getTableColCount(TableStyle.GRIDVIEW, tableId);
 			  if(approverColCount>2) {
@@ -185,7 +183,7 @@ public class BTest {
 	 */
 	public void startApprovalProcess(ChangeOrderType cot) throws Exception {
 		try {
-				ApprovalPage approvalPage=new ApprovalPage(this.driver);
+				Page approvalPage=new Page(this.driver);
 				//click the approval tab
 				logger.info("switch to approval tab");
 				approvalPage.tab.clickTab("流程审批");
@@ -229,7 +227,7 @@ public class BTest {
 	 */
 	public void approveProcess(String taskName) throws Exception {
 		try {
-				ApprovalPage approvalPage=new ApprovalPage(this.driver);
+				Page approvalPage=new Page(this.driver);
 				
 				//if taskName is the cost estimation, need to fill the cost estimation value
 				if(taskName.equalsIgnoreCase("成本测算")) {

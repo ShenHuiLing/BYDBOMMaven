@@ -5,8 +5,7 @@ import org.testng.annotations.Test;
 import base.BTest;
 import common.EnvJsonFile;
 import common.TableStyle;
-import page.MainPage;
-import page.ConfigurationPage;
+import page.Page;
 
 import org.testng.annotations.BeforeTest;
 
@@ -26,55 +25,54 @@ public class PlanningConfigurationTableMaintain extends BTest{
 		  super.LoginBOM();
 		  Thread.sleep(10000);
 		  
+		  Page page=new Page(super.driver);
+		  
 		  //open planning configuration window
 		  logger.info("open planning configuration management window");
-		  MainPage mainPage=new MainPage(super.driver);
-		  mainPage.mainMenu.hoverMenu("配置管理");
+		  page.mainMenu.hoverMenu("配置管理");
 		  Thread.sleep(2000);
-		  mainPage.mainMenu.hoverMenu("规划配置");
+		  page.mainMenu.hoverMenu("规划配置");
 		  Thread.sleep(2000);
-		  mainPage.mainMenu.clickMenu("规划配置表");
+		  page.mainMenu.clickMenu("规划配置表");
 		  Thread.sleep(5000);
-		  
-		  ConfigurationPage planConfigPage=new ConfigurationPage(super.driver);
 		  
 		  //select planning configuration car
 		  String planningConfigurationCar;
 		  super.bcf.readJasonFile(EnvJsonFile.TESTDATA);
 		  planningConfigurationCar=super.bcf.getProperty("PlanningConfigurationCarName");
-		  String MagnifyingGlassTableId=planConfigPage.otherElements.getTableId(TableStyle.GANGTRIGGERFIELD, 0);
-		  planConfigPage.button.clickMagnifyingGlass(TableStyle.GANGTRIGGERFIELD, MagnifyingGlassTableId,1,2);
+		  String MagnifyingGlassTableId=page.otherElements.getTableId(TableStyle.GANGTRIGGERFIELD, 0);
+		  page.button.clickMagnifyingGlass(TableStyle.GANGTRIGGERFIELD, MagnifyingGlassTableId,1,2);
 		  Thread.sleep(3000);
 		  //input planning configuration car for search
-		  planConfigPage.text.inputText("planVehicleName", planningConfigurationCar);
+		  page.text.inputText("planVehicleName", planningConfigurationCar);
 		  Thread.sleep(1000);
-		  planConfigPage.button.clickButton("查询", 1);
+		  page.button.clickButton("查询", 1);
 		  Thread.sleep(1000);
-		  String PopUpTableId=planConfigPage.otherElements.getTableId(TableStyle.GRIDVIEW,1);
-		  planConfigPage.option.clickCheckBox(PopUpTableId, 1,1);
+		  String PopUpTableId=page.otherElements.getTableId(TableStyle.GRIDVIEW,1);
+		  page.option.clickCheckBox(PopUpTableId, 1,1);
 		  Thread.sleep(1000);
-		  planConfigPage.button.clickButton("选择");
+		  page.button.clickButton("选择");
 		  Thread.sleep(1000);
 		  
 		  //start editing
 		  logger.info("start editing configuration option");
-		  planConfigPage.button.clickButton("进入编辑");
+		  page.button.clickButton("进入编辑");
 		  Thread.sleep(1000);
 		  
-		  String mainDataTableId=planConfigPage.otherElements.getTableId(TableStyle.GRIDVIEW,0);
+		  String mainDataTableId=page.otherElements.getTableId(TableStyle.GRIDVIEW,0);
 		  logger.info("select configuraiton option");
-		  planConfigPage.text.openTextBox(mainDataTableId, 1, 8);
+		  page.text.openTextBox(mainDataTableId, 1, 8);
 		  Thread.sleep(1000);
-		  planConfigPage.option.expandDropdownList();
+		  page.option.expandDropdownList();
 		  Thread.sleep(1000);
-		  planConfigPage.option.selectOption("●");
+		  page.option.selectOption("●");
 		  Thread.sleep(1000);
-		  planConfigPage.text.openTextBox(mainDataTableId, 1, 9);
+		  page.text.openTextBox(mainDataTableId, 1, 9);
 		  Thread.sleep(1000);
 		  
 		  //save configuration table
 		  logger.info("save configuration table");
-		  planConfigPage.button.clickButton("保存");
+		  page.button.clickButton("保存");
 		  Thread.sleep(2000);
 		  
 	  } catch (Exception e) {

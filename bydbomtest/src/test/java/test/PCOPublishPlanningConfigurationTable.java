@@ -8,8 +8,7 @@ import common.DropDownListStyle;
 import common.EnvJsonFile;
 import common.LabelStyle;
 import common.TableStyle;
-import page.MainPage;
-import page.ConfigurationPage;
+import page.Page;
 
 import org.testng.annotations.BeforeTest;
 
@@ -31,58 +30,60 @@ public class PCOPublishPlanningConfigurationTable extends BTest{
 		  super.LoginBOM();
 		  Thread.sleep(25000);
 		  
+		  Page page=new Page(super.driver);
+		  
 		  //open PCO window
 		  logger.info("open PCO management window");
-		  MainPage mainPage=new MainPage(super.driver);
-		  mainPage.mainMenu.hoverMenu("变更管理");
+		  page.mainMenu.hoverMenu("变更管理");
 		  Thread.sleep(2000);
-		  mainPage.mainMenu.clickMenu("规划配置变更管理");
+		  page.mainMenu.clickMenu("规划配置变更管理");
 		  Thread.sleep(10000);
 		  
-		  ConfigurationPage planConfigPage=new ConfigurationPage(super.driver);
+		  String labelId;
 		  
 		  //create a new PCO
 		  logger.info("create a new PCO");
-		  planConfigPage.button.clickButton("新增");
-		  Thread.sleep(1000);
-		  String changeOrder=planConfigPage.text.getChangeOrderNumber();
-		  logger.info("new PCO number: " + changeOrder);
+		  page.button.clickButton("新增");
+		  Thread.sleep(5000);
+		  labelId=page.otherElements.getLabelId(LabelStyle.TEXTFIELD, "PCO编号", 1);
+		  String changeOrder=page.text.getValueFromTextBox(labelId, "changeCode", 0);
+		  logger.info("new PS number: " + changeOrder);
 		  
 		  //select planning configuration car
 		  logger.info("select planning configuration car");
 		  String planningConfigurationCar;
 		  super.bcf.readJasonFile(EnvJsonFile.TESTDATA);
 		  planningConfigurationCar=super.bcf.getProperty("PlanningConfigurationCarName");
-		  String MagnifyingGlassTableId=planConfigPage.otherElements.getTableId(TableStyle.GANGTRIGGERFIELD, 1);
-		  planConfigPage.button.clickMagnifyingGlass(TableStyle.GANGTRIGGERFIELD, MagnifyingGlassTableId,1,2);
+		  String MagnifyingGlassTableId=page.otherElements.getTableId(TableStyle.GANGTRIGGERFIELD, 1);
+		  page.button.clickMagnifyingGlass(TableStyle.GANGTRIGGERFIELD, MagnifyingGlassTableId,1,2);
 		  Thread.sleep(3000);
 		  //input planning configuration car for search
-		  planConfigPage.text.inputText("planVehicleName", planningConfigurationCar);
+		  page.text.inputText("planVehicleName", planningConfigurationCar);
 		  Thread.sleep(1000);
-		  planConfigPage.button.clickButton("查询", 1);
+		  page.button.clickButton("查询", 1);
 		  Thread.sleep(1000);
-		  String PopUpTableId=planConfigPage.otherElements.getTableId(TableStyle.GRIDVIEW,1);
-		  planConfigPage.option.clickCheckBox(PopUpTableId, 1,1);
+		  String PopUpTableId=page.otherElements.getTableId(TableStyle.GRIDVIEW,1);
+		  page.option.clickCheckBox(PopUpTableId, 1,1);
 		  Thread.sleep(1000);
-		  planConfigPage.button.clickButton("选择");
+		  page.button.clickButton("选择");
 		  Thread.sleep(1000);
 		  
-		  String labelId=planConfigPage.otherElements.getLabelId(LabelStyle.GANTCODETYPECOMBOBOX,"变更版本",1);
-		  planConfigPage.option.expandDropdownList(DropDownListStyle.GANTCODETYPECOMBOBOX,labelId);
+		  labelId=page.otherElements.getLabelId(LabelStyle.GANTCODETYPECOMBOBOX,"变更版本",1);
+		  page.option.expandDropdownList(DropDownListStyle.GANTCODETYPECOMBOBOX,labelId);
 		  Thread.sleep(2000);
-		  planConfigPage.option.selectOption("A版");
+		  page.option.selectOption("A版");
 		  Thread.sleep(1000);
 		  
 		  //save the PS
 		  logger.info("save the PCO");
-		  planConfigPage.button.clickButton("保存");
+		  page.button.clickButton("保存");
 		  Thread.sleep(5000);
 		  
 		  //add the change content
 		  logger.info("add the change content");
-		  planConfigPage.tab.clickTab("变更内容");
+		  page.tab.clickTab("变更内容");
 		  Thread.sleep(10000);
-		  planConfigPage.button.clickButton("关联变更");
+		  page.button.clickButton("关联变更");
 		  Thread.sleep(15000);
 		  
 		  //start approval process
