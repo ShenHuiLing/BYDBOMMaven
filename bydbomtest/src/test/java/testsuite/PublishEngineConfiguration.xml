@@ -4,8 +4,8 @@
 <!--set the configuration option in the configuration table-->
 <!--publish the engine configuration table by PS-->
 <!--approve the PS-->
-<suite name="publish planning configuration table Test">
-    <test name="create a new planning configuration in library">
+<suite name="publish engine configuration table Test">
+    <test name="create a new engine configuration in library">
         <classes>
             <class name="test.EngineConfigurationLibraryMaintain"/>
         </classes>
