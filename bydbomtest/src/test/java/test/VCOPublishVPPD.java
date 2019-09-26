@@ -74,7 +74,7 @@ public class VCOPublishVPPD extends BTest {
 			  testData.put("ChangeOrder",changeOrder);
 			  super.bcf.writeJasonFile(EnvJsonFile.TESTDATA, testData);
 			  
-			  super.close();
+			  
 		  }
 		  
 	  }
@@ -91,7 +91,16 @@ public class VCOPublishVPPD extends BTest {
 
   @AfterTest
   public void afterTest() {
-		  
+	  try {
+		super.bcf.readJasonFile(EnvJsonFile.TESTDATA);
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	  String VCOSkipFlag=super.bcf.getProperty("VCOSkipFlag");
+	  if(!VCOSkipFlag.contains("true")) {
+		  super.close();
+	  }
   }
 
 }

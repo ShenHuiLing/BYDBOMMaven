@@ -115,7 +115,7 @@ public class MaterialApply extends BTest{
 		  Id=page.otherElements.getLabelId(LabelStyle.TEXTFIELD, "À∞ ’±‡¬Î");
 		  page.text.openTextBox(TextStyle.IDININPUT, Id, 1);
 		  Thread.sleep(1000);
-		  page.text.inputText(TextStyle.TEXTFIELD, "122333");
+		  page.text.inputText(TextStyle.TEXTFIELD, "1000");
 		  Thread.sleep(1000);
 		  page.button.clickButton("≤È—Ø",1);
 		  Thread.sleep(1000);
