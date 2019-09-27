@@ -264,7 +264,7 @@ public class BTest {
 					approvalPage.button.clickButton("保存");
 					Thread.sleep(20000);
 				}
-				else if(taskName.equalsIgnoreCase("采购成本维护")) {
+				else if(taskName.equalsIgnoreCase("采购议价维护")) {
 					logger.info("as current approval node is cost for purchase, it needs to fill the negotiation price information");
 					approvalPage.tab.clickTab("零部件变更");
 					Thread.sleep(5000);

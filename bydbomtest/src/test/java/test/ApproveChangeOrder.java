@@ -26,11 +26,11 @@ public class ApproveChangeOrder extends BTest {
 	  try {
 		  //start BOM
 		  super.StartBOM(EnvJsonFile.BASICFILE, "local");
-		  Thread.sleep(15000);
+		  Thread.sleep(20000);
 		  
 		  //login BOM
 		  super.LoginBOMAsApprover();
-		  Thread.sleep(20000);
+		  Thread.sleep(25000);
 		  
 		  Page page=new Page(super.driver);
 		  
